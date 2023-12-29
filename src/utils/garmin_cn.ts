@@ -78,14 +78,14 @@ export const migrateGarminCN2GarminGlobal = async (count = 200) => {
     
     const  all_count = await clientCN.countActivities();
     console.log(`国内区共有 ${number2capital(all_count)} 条数据`);
-    const  all_count = await clientGlobal.countActivities();
+    all_count = await clientGlobal.countActivities();
     console.log(`国际区已经存在 ${number2capital(all_count)} 条数据`);
 
     const actSlices = await clientCN.getActivities(actIndex, totalAct);
     // only running
     // const runningActs = _.filter(actSlices, { activityType: { typeKey: 'running' } });
 
-    console.log(`本次向国际区迁移 ${number2capital(runningActs.length)} 条数据, 开始：${actIndex}, 数量：${totalAct}`);
+    console.log(`本次向国际区迁移 ${number2capital(actSlices.length)} 条数据, 开始：${actIndex}, 数量：${totalAct}`);
 
     const runningActs = actSlices;
     for (let j = 0; j < runningActs.length; j++) {
