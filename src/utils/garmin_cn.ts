@@ -78,8 +78,8 @@ export const migrateGarminCN2GarminGlobal = async (count = 200) => {
     
     const  all_count = await clientCN.countActivities();
     console.log(`国内区共有 ${number2capital(all_count)} 条数据`);
-    all_count = await clientGlobal.countActivities();
-    console.log(`国际区已经存在 ${number2capital(all_count)} 条数据`);
+    const all_count_g = await clientGlobal.countActivities();
+    console.log(`国际区已经存在 ${number2capital(all_count_g)} 条数据`);
 
     const actSlices = await clientCN.getActivities(actIndex, totalAct);
     // only running
